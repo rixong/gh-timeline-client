@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 
-class Login extends Component {
+class NewUser extends Component {
 
   constructor() {
     super()
     this.state = {
       username: '',
+      bio: '',
       password: '',
       token: ''
     }
@@ -17,26 +18,29 @@ class Login extends Component {
     })
 }
 
-handleLoginSubmit = (e) => {
-  e.preventDefault();
-  console.log('login here');
-  
-  fetch('http://localhost:3000/api/v1/login',{
-    method: "POST",
-    headers: {
-      'Content-Type': 'application/json',
-      Accept: 'application/json'
-    },
-    body: JSON.stringify({
-      user: {
-        username: this.state.username,
-        password: this.state.password,
-      }
+  handleSubmit = e => {
+    e.preventDefault();
+    console.log('create user here');
+    
+    fetch('http://localhost:3000/api/v1/users',{
+      method: "POST",
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json'
+      },
+      body: JSON.stringify({
+        user: {
+          username: this.state.username,
+          password: this.state.password,
+          bio: this.state.bio,
+          // email: this.state.email,
+          // password_confirmation: this.state.password_confirmation
+        }
+    })
   })
-})
-.then(res => res.json())
-// .then(json => console.log(json))
-.then(json => this.setState({token: json.jwt}))
+  .then(res => res.json())
+  // .then(json => console.log(json.jwt))
+  .then(json => this.setState({token: json.jwt}))
 }
 
 handleClick = () => {
@@ -46,16 +50,13 @@ handleClick = () => {
     Authorization: `Bearer: ${this.state.token}`
   }
 })
-.then(res => res.json())
-.then(json => console.log(json))
-
 }
 
   render() {
     return <div>
 
-      <h2>Existing User</h2>
-      <form onSubmit={this.handleLoginSubmit}>
+      <h2>New User</h2>
+      <form onSubmit={this.handleSubmit}>
         <label htmlFor='username'>Username</label>
         <input
           type="text"
@@ -72,11 +73,20 @@ handleClick = () => {
           value={this.state.password}
           />
 
+        <label htmlFor='bio'>Bio</label>
+        <input
+          type="text"
+          name="bio"
+          onChange={event => this.handleChange(event)}
+          value={this.state.bio}
+        />
         <button type="submit">Submit</button>
+
       </form>
+
 <br></br>
       <button onClick={this.handleClick}>Click to see profile info</button>
     </div>
   }
 }
-export default Login;
+export default NewUser;

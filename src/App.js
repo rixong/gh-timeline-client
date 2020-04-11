@@ -1,7 +1,9 @@
 import React, {Component} from 'react';
 import './App.css';
 import './components/Login'
+import './components/NewUser'
 import Login from './components/Login';
+import NewUser from './components/NewUser';
 
 class App extends Component {
 
@@ -12,6 +14,7 @@ class App extends Component {
         <header className="App-header">
           GitHub Timeline App
         </header>
+        <NewUser />
         <Login />
       </div>
     );
