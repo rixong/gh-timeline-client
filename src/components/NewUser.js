@@ -6,8 +6,9 @@ class NewUser extends Component {
     super()
     this.state = {
       username: '',
-      bio: '',
       password: '',
+      password_confirmation: '',
+      bio: '',
       token: ''
     }
   }
@@ -32,15 +33,18 @@ class NewUser extends Component {
         user: {
           username: this.state.username,
           password: this.state.password,
-          bio: this.state.bio,
+          password_confirmation: this.state.password_confirmation,
+          bio: this.state.bio
           // email: this.state.email,
-          // password_confirmation: this.state.password_confirmation
         }
     })
   })
   .then(res => res.json())
   // .then(json => console.log(json.jwt))
-  .then(json => this.setState({token: json.jwt}))
+  .then(json => {
+    console.log(json);
+    this.setState({token: json.jwt})
+    })
 }
 
 handleClick = () => {
@@ -71,6 +75,14 @@ handleClick = () => {
           name="password"
           onChange={event => this.handleChange(event)}
           value={this.state.password}
+          />
+
+        <label htmlFor='password_confirmation'>Confirm Password</label>
+        <input
+          type="text"
+          name="password_confirmation"
+          onChange={event => this.handleChange(event)}
+          value={this.state.password_confirmation}
           />
 
         <label htmlFor='bio'>Bio</label>
