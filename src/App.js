@@ -5,7 +5,9 @@ import './components/NewUser'
 import Login from './components/Login';
 import NewUser from './components/NewUser';
 import Profile from './components/Profile'
+import LinkButton from './components/LinkButton'
 import { BrowserRouter as Router, Route } from 'react-router-dom';
+
 
 class App extends Component {
 
@@ -52,7 +54,7 @@ class App extends Component {
           GitHub Timeline App
         </header>
         <div className="nav-bar">
-          <button onClick={this.onLogoutClick}>Logout</button>
+        <LinkButton onClick={this.onLogoutClick} to='/'>Logout</LinkButton>
         </div>
         {this.state.curUser ? null : <Route exact path="/" render={(props) => <Login {...props} sendToken={this.addToken} />}/>}
         {this.state.curUser ? null : <Route exact path="/signup" render={(props) => <NewUser {...props} sendToken={this.addToken} />}/>}
