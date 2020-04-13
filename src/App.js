@@ -54,7 +54,7 @@ class App extends Component {
         <div className="nav-bar">
           <button onClick={this.onLogoutClick}>Logout</button>
         </div>
-        <Route exact path="/" render={(props) => <Login {...props} sendToken={this.addToken} />}/>
+        {this.state.curUser ? null : <Route exact path="/" render={(props) => <Login {...props} sendToken={this.addToken} />}/>}
         <Route exact path="/signup" component={NewUser} sendToken={this.addToken} />
         {this.state.curUser ? <Profile user={this.state.curUser} /> : null}
       </div>
