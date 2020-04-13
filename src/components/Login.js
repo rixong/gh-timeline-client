@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import LinkButton from './LinkButton'
 
 class Login extends Component {
 
@@ -41,7 +42,7 @@ handleLoginSubmit = (e) => {
   render() {
     return <div>
 
-      <h2>Existing User</h2>
+      <h2>Existing User?</h2>
       <form onSubmit={this.handleLoginSubmit}>
         <label htmlFor='email'>Email</label>
         <input
@@ -61,6 +62,11 @@ handleLoginSubmit = (e) => {
 
         <button type="submit">Login</button>
       </form>
+      <div>
+      <h2>New User?</h2>
+      <LinkButton to='/signup'>Signup</LinkButton>
+      </div>
+      
       <div>
         <h2>About Github Timeline App</h2>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
