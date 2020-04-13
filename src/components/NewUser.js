@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import LinkButton from './LinkButton'
 
 class NewUser extends Component {
 
@@ -93,7 +94,7 @@ class NewUser extends Component {
           value={this.state.git_username}
         />
 
-        <button type="submit">Submit</button>
+        <LinkButton to='/signup'>Signup</LinkButton>
 
       </form>
     </div>
