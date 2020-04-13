@@ -50,11 +50,9 @@ class App extends Component {
     return (
       <Router>
       <div className="App">
-        <header className="App-header">
-          GitHub Timeline App
-        </header>
         <div className="nav-bar">
-        <LinkButton onClick={this.onLogoutClick} to='/'>Logout</LinkButton>
+        <h1>GitHub Timeline App
+        <LinkButton onClick={this.onLogoutClick} to='/'>Logout</LinkButton></h1>
         </div>
         {this.state.curUser ? null : <Route exact path="/" render={(props) => <Login {...props} sendToken={this.addToken} />}/>}
         {this.state.curUser ? null : <Route exact path="/signup" render={(props) => <NewUser {...props} sendToken={this.addToken} />}/>}
