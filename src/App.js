@@ -56,7 +56,7 @@ class App extends Component {
         </div>
         <Route exact path="/" component={Login} sendToken={this.addToken} />
         <Route exact path="/signup" component={NewUser} sendToken={this.addToken} />
-        {this.state.curUser ? <Profile user={this.state.curUser} /> : null}
+        {this.state.curUser ? <Route exact path="/profile" component={Profile} user={this.state.curUser} /> : null}
       </div>
       </Router>
     );
