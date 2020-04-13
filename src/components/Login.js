@@ -5,9 +5,8 @@ class Login extends Component {
   constructor() {
     super()
     this.state = {
-      username: '',
-      password: '',
-      token: ''
+      email: '',
+      password: ''
     }
   }
 
@@ -29,26 +28,14 @@ handleLoginSubmit = (e) => {
     },
     body: JSON.stringify({
       user: {
-        username: this.state.username,
+        email: this.state.email,
         password: this.state.password,
       }
   })
 })
 .then(res => res.json())
 // .then(json => console.log(json))
-.then(json => this.setState({token: json.jwt}))
-}
-
-handleClick = () => {
-  fetch('http://localhost:3000/api/v1/profile', {
-  method: 'GET',
-  headers: {
-    Authorization: `Bearer: ${this.state.token}`
-  }
-})
-.then(res => res.json())
-.then(json => console.log(json))
-
+.then(json => this.props.sendToken(json.jwt))
 }
 
   render() {
@@ -56,12 +43,12 @@ handleClick = () => {
 
       <h2>Existing User</h2>
       <form onSubmit={this.handleLoginSubmit}>
-        <label htmlFor='username'>Username</label>
+        <label htmlFor='email'>Email</label>
         <input
           type="text"
-          name="username"
+          name="email"
           onChange={event => this.handleChange(event)}
-          value={this.state.username}
+          value={this.state.email}
           />
 
         <label htmlFor='password'>Password</label>
@@ -72,7 +59,7 @@ handleClick = () => {
           value={this.state.password}
           />
 
-        <button type="submit">Submit</button>
+        <button type="submit">Login</button>
       </form>
 <br></br>
       <button onClick={this.handleClick}>Click to see profile info</button>

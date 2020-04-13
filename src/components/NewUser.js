@@ -5,11 +5,12 @@ class NewUser extends Component {
   constructor() {
     super()
     this.state = {
-      username: '',
+      email: '',
       password: '',
       password_confirmation: '',
-      bio: '',
-      token: ''
+      name: '',
+      git_username: '',
+      git_userid: '',
     }
   }
 
@@ -22,7 +23,7 @@ class NewUser extends Component {
   handleSubmit = e => {
     e.preventDefault();
     console.log('create user here');
-    
+  
     fetch('http://localhost:3000/api/v1/users',{
       method: "POST",
       headers: {
@@ -31,29 +32,20 @@ class NewUser extends Component {
       },
       body: JSON.stringify({
         user: {
-          username: this.state.username,
+          email: this.state.email,
           password: this.state.password,
           password_confirmation: this.state.password_confirmation,
-          bio: this.state.bio
-          // email: this.state.email,
+          name: this.state.name,
+          git_username: this.state.git_username,
+          git_id: this.state.git_id
         }
     })
   })
   .then(res => res.json())
   // .then(json => console.log(json.jwt))
   .then(json => {
-    console.log(json);
-    this.setState({token: json.jwt})
-    })
-}
-
-handleClick = () => {
-  fetch('http://localhost:3000/api/v1/profile', {
-  method: 'GET',
-  headers: {
-    Authorization: `Bearer: ${this.state.token}`
-  }
-})
+    this.props.sendToken(json.jwt)
+  })
 }
 
   render() {
@@ -61,12 +53,12 @@ handleClick = () => {
 
       <h2>New User</h2>
       <form onSubmit={this.handleSubmit}>
-        <label htmlFor='username'>Username</label>
+        <label htmlFor='email'>Email</label>
         <input
           type="text"
-          name="username"
+          name="email"
           onChange={event => this.handleChange(event)}
-          value={this.state.username}
+          value={this.state.email}
           />
 
         <label htmlFor='password'>Password</label>
@@ -85,19 +77,25 @@ handleClick = () => {
           value={this.state.password_confirmation}
           />
 
-        <label htmlFor='bio'>Bio</label>
+        <label htmlFor='name'>Name</label>
         <input
           type="text"
-          name="bio"
+          name="name"
           onChange={event => this.handleChange(event)}
-          value={this.state.bio}
+          value={this.state.name}
         />
+
+        <label htmlFor='git_username'>Github Username</label>
+        <input
+          type="text"
+          name="git_username"
+          onChange={event => this.handleChange(event)}
+          value={this.state.git_username}
+        />
+
         <button type="submit">Submit</button>
 
       </form>
-
-<br></br>
-      <button onClick={this.handleClick}>Click to see profile info</button>
     </div>
   }
 }
