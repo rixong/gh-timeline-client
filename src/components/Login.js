@@ -65,6 +65,19 @@ handleLoginSubmit = (e) => {
       <div>
       <h2>New User?</h2>
       <LinkButton to='/signup'>Signup</LinkButton>
+
+      {/* Creates link text rather than link button:
+        <button type="submit">Login</button>
+        </form>
+        <div>
+          <h2>New User?</h2>
+          <Link
+            className="btn btn-pink"
+            role="button"
+            to="/signup"
+          >
+            Signup
+          </Link> */}
       </div>
       
       <div>
