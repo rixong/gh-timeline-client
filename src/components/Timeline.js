@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import '../Timeline.css';
 
 class Timeline extends Component {
 
@@ -6,50 +7,60 @@ class Timeline extends Component {
         super()
         this.state = {
         }
-      }
+    }
 
-        renderTimeline = () => {
+    renderRepos = (repos) => {
+        repos.map((value, index) => {
+            return <li key={index}>{value}</li>
+        })
+        console.log('repos rendered')
+    }
 
-            // define variables
-            var items = document.querySelectorAll(".timeline li");
+    renderTimeline = (repos) => {
 
-            // check if an element is in viewport
-            // http://stackoverflow.com/questions/123999/how-to-tell-if-a-dom-element-is-visible-in-the-current-viewport
-            function isElementInViewport(el) {
-                var rect = el.getBoundingClientRect();
-                return (
-                    rect.top >= 0 &&
-                    rect.left >= 0 &&
-                    rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
-                    rect.right <= (window.innerWidth || document.documentElement.clientWidth)
-                );
-            }
+        // define variables
+        var items = document.querySelectorAll(".timeline li");
 
-            function callbackFunc() {
-                for (var i = 0; i < items.length; i++) {
-                    if (isElementInViewport(items[i])) {
-                        items[i].classList.add("in-view");
-                    }
+        // check if an element is in viewport
+        // http://stackoverflow.com/questions/123999/how-to-tell-if-a-dom-element-is-visible-in-the-current-viewport
+        function isElementInViewport(el) {
+            var rect = el.getBoundingClientRect();
+            return (
+                rect.top >= 0 &&
+                rect.left >= 0 &&
+                rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+                rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+            );
+        }
+
+        function callbackFunc() {
+            for (var i = 0; i < items.length; i++) {
+                if (isElementInViewport(items[i])) {
+                    items[i].classList.add("in-view");
                 }
             }
+        }
 
-            // listen for events
-            window.addEventListener("load", callbackFunc);
-            window.addEventListener("resize", callbackFunc);
-            window.addEventListener("scroll", callbackFunc);
+        // listen for events
+        window.addEventListener("load", callbackFunc);
+        window.addEventListener("resize", callbackFunc);
+        window.addEventListener("scroll", callbackFunc);
 
-        };
+    };
 
     render() {
         return <div>
-            {this.renderTimeline()}
             <section className="timeline">
                 <ul>
+                    {this.renderRepos(this.props.repos)}
+                    {this.renderTimeline(this.props.repos)}
+                    {/* Recreate HTML for length of map from li to line 56 comment*/}
                     <li>
                         <div>
                             <time>1934</time> At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium
       </div>
                     </li>
+                    {/* End of li */}
                     <li>
                         <div>
                             <time>1937</time> Proin quam velit, efficitur vel neque vitae, rhoncus commodo mi. Suspendisse finibus mauris et bibendum molestie. Aenean ex augue, varius et pulvinar in, pretium non nisi.
