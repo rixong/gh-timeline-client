@@ -43,8 +43,8 @@ class Timeline extends Component {
 
     render() {
         return <div>
-            {this.renderTimeline()}
             <section className="timeline">
+            {this.renderTimeline()}
                 <ul>
                     <li>
                         <div>
