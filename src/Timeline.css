@@ -73,7 +73,7 @@
   /* EFFECTS
   –––––––––––––––––––––––––––––––––––––––––––––––––– */
   
-  /* .timeline ul li::after {
+  .timeline ul li::after {
     transition: background .5s ease-in-out;
   }
   
@@ -99,7 +99,7 @@
     transform: none;
     visibility: visible;
     opacity: 1;
-  } */
+  }
   
   
   /* GENERAL MEDIA QUERIES
