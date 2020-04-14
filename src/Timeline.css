@@ -1,3 +1,11 @@
+/* *,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+} */
+
 /* Timeline CSS Below */
 .timeline ul {
     background: #456990;
@@ -82,8 +90,8 @@
   }
   
   .timeline ul li div {
-    visibility: hidden;
-    opacity: 0;
+    /* visibility: hidden;
+    opacity: 0; */
     transition: all .5s ease-in-out;
   }
   
@@ -101,9 +109,9 @@
     opacity: 1;
   }
   
-  
-  /* GENERAL MEDIA QUERIES
-  –––––––––––––––––––––––––––––––––––––––––––––––––– 
+/*   
+   GENERAL MEDIA QUERIES
+  ––––––––––––––––––––––––––––––––––––––––––––––––––  */
   
   @media screen and (max-width: 900px) {
     .timeline ul li div {
@@ -111,7 +119,7 @@
     }
     .timeline ul li:nth-child(even) div {
       left: -289px;
-      250+45-6
+      /* 250+45-6 */
     }
   }
   
@@ -129,4 +137,5 @@
       left: -15px;
       border-width: 8px 16px 8px 0;
       border-color: transparent #F45B69 transparent transparent;
-    }  */
+    }
+  }

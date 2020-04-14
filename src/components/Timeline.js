@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import '../Timeline.css';
+import moment from 'moment'
+// import '../Timeline.css';
 
 class Timeline extends Component {
 
@@ -9,11 +10,22 @@ class Timeline extends Component {
         }
     }
 
+    sortRepoByDate = (repos) => {
+        return repos.sort((a,b) => a.localeCompare(b));
+    }
+
     renderRepos = (repos) => {
-        repos.map((value, index) => {
-            return <li key={index}>{value}</li>
+        return repos.map((value, index) => {
+            return <li key={index}>
+                <div >
+                <time>
+                    Date: {moment(value.repo_created_at).format('MMMM Do YYYY')}
+                </time>
+                    Title: {value.name}
+                </div>
+            </li>
         })
-        console.log('repos rendered')
+        // console.log('repos rendered')
     }
 
     renderTimeline = (repos) => {
@@ -53,69 +65,15 @@ class Timeline extends Component {
             <section className="timeline">
                 <ul>
                     {this.renderRepos(this.props.repos)}
-                    {this.renderTimeline(this.props.repos)}
+                    {/* {this.renderTimeline(this.props.repos)} */}
                     {/* Recreate HTML for length of map from li to line 56 comment*/}
-                    <li>
+                    {/* <li>
                         <div>
                             <time>1934</time> At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium
       </div>
                     </li>
                     {/* End of li */}
-                    <li>
-                        <div>
-                            <time>1937</time> Proin quam velit, efficitur vel neque vitae, rhoncus commodo mi. Suspendisse finibus mauris et bibendum molestie. Aenean ex augue, varius et pulvinar in, pretium non nisi.
-      </div>
-                    </li>
-                    <li>
-                        <div>
-                            <time>1940</time> Proin iaculis, nibh eget efficitur varius, libero tellus porta dolor, at pulvinar tortor ex eget ligula. Integer eu dapibus arcu, sit amet sollicitudin eros.
-      </div>
-                    </li>
-                    <li>
-                        <div>
-                            <time>1943</time> In mattis elit vitae odio posuere, nec maximus massa varius. Suspendisse varius volutpat mattis. Vestibulum id magna est.
-      </div>
-                    </li>
-                    <li>
-                        <div>
-                            <time>1946</time> In mattis elit vitae odio posuere, nec maximus massa varius. Suspendisse varius volutpat mattis. Vestibulum id magna est.
-      </div>
-                    </li>
-                    <li>
-                        <div>
-                            <time>1956</time> In mattis elit vitae odio posuere, nec maximus massa varius. Suspendisse varius volutpat mattis. Vestibulum id magna est.
-      </div>
-                    </li>
-                    <li>
-                        <div>
-                            <time>1957</time> In mattis elit vitae odio posuere, nec maximus massa varius. Suspendisse varius volutpat mattis. Vestibulum id magna est.
-      </div>
-                    </li>
-                    <li>
-                        <div>
-                            <time>1967</time> Aenean condimentum odio a bibendum rhoncus. Ut mauris felis, volutpat eget porta faucibus, euismod quis ante.
-      </div>
-                    </li>
-                    <li>
-                        <div>
-                            <time>1977</time> Vestibulum porttitor lorem sed pharetra dignissim. Nulla maximus, dui a tristique iaculis, quam dolor convallis enim, non dignissim ligula ipsum a turpis.
-      </div>
-                    </li>
-                    <li>
-                        <div>
-                            <time>1985</time> In mattis elit vitae odio posuere, nec maximus massa varius. Suspendisse varius volutpat mattis. Vestibulum id magna est.
-      </div>
-                    </li>
-                    <li>
-                        <div>
-                            <time>2000</time> In mattis elit vitae odio posuere, nec maximus massa varius. Suspendisse varius volutpat mattis. Vestibulum id magna est.
-      </div>
-                    </li>
-                    <li>
-                        <div>
-                            <time>2005</time> In mattis elit vitae odio posuere, nec maximus massa varius. Suspendisse varius volutpat mattis. Vestibulum id magna est.
-      </div>
-                    </li>
+
                 </ul>
             </section>
         </div>
