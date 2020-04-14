@@ -56,7 +56,7 @@ class Profile extends Component {
           />
           <button type='submit'>Submit</button>
         </form>
-        <Timeline />
+        <Timeline repos={this.state.repos}/>
       </div>
 
     </div>
