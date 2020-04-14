@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Timeline from './Timeline'
 
 class Profile extends Component {
 
@@ -55,8 +56,9 @@ class Profile extends Component {
           />
           <button type='submit'>Submit</button>
         </form>
-
+        <Timeline />
       </div>
+
     </div>
 
   }
