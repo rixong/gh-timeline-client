@@ -66,7 +66,7 @@ class Timeline extends Component {
                 <ul>
                     {this.renderRepos(this.props.repos)}
                     {this.renderTimeline()}
-                    {/* Recreate HTML for length of map from li to line 56 comment
+                    {/* Recreate HTML for length of map from li to 'End of li' comment
                     <li>
                         <div>
                             <time>1934</time> At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium
