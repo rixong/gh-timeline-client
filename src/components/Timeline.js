@@ -9,7 +9,8 @@ class Timeline extends Component {
         }
       }
 
-        renderTimeline = () => {
+        renderTimeline = (repos) => {
+            console.log(repos)
 
             // define variables
             var items = document.querySelectorAll(".timeline li");
@@ -44,7 +45,7 @@ class Timeline extends Component {
     render() {
         return <div>
             <section className="timeline">
-            {this.renderTimeline()}
+            {this.renderTimeline(this.props.repos)}
                 <ul>
                     <li>
                         <div>
