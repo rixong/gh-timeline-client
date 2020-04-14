@@ -6,6 +6,7 @@ import './components/NewUser'
 import Login from './components/Login';
 import NewUser from './components/NewUser';
 import Profile from './components/Profile'
+import SideSignIn from './components/SideSignIn'
 import LinkButton from './components/LinkButton'
 // import Timeline from './components/Timeline'
 import { BrowserRouter as Router, Route } from 'react-router-dom';
@@ -66,6 +67,7 @@ class App extends Component {
           {this.state.curUser ? null : <Route exact path="/signup" render={(props) => <NewUser {...props} sendToken={this.addToken} />} />}
           {this.state.curUser ? <Profile user={this.state.curUser} /> : null}
           {/* <Timeline /> */}
+          { < SideSignIn />}
         </div>
       </Router>
     );
