@@ -72,7 +72,9 @@ export default function SignInSide() {
           <Typography component="h1" variant="h5">
             Sign in
           </Typography>
-          <form className={classes.form} noValidate>
+          <form
+            onSubmit={this.handleLoginSubmit} 
+            className={classes.form} noValidate>
             <TextField
               variant="outlined"
               margin="normal"
@@ -83,6 +85,8 @@ export default function SignInSide() {
               name="email"
               autoComplete="email"
               autoFocus
+              onChange={event => this.handleChange(event)}
+              value={this.state.email}
             />
             <TextField
               variant="outlined"
@@ -94,6 +98,8 @@ export default function SignInSide() {
               type="password"
               id="password"
               autoComplete="current-password"
+              onChange={event => this.handleChange(event)}
+              value={this.state.password}
             />
             <FormControlLabel
               control={<Checkbox value="remember" color="primary" />}
