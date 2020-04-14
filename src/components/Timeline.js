@@ -9,8 +9,11 @@ class Timeline extends Component {
         }
       }
 
-        renderTimeline = (repos) => {
+        renderRepos = (repos) => {
             console.log(repos)
+        }
+
+        renderTimeline = (repos) => {
 
             // define variables
             var items = document.querySelectorAll(".timeline li");
@@ -40,6 +43,7 @@ class Timeline extends Component {
             window.addEventListener("resize", callbackFunc);
             window.addEventListener("scroll", callbackFunc);
 
+            this.renderRepos(repos);
         };
 
     render() {
@@ -47,11 +51,13 @@ class Timeline extends Component {
             <section className="timeline">
                 <ul>
                 {this.renderTimeline(this.props.repos)}
+                {/* Recreate HTML for length of map from li to line 56 comment*/}
                     <li>
                         <div>
                             <time>1934</time> At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium
       </div>
                     </li>
+                {/* End of li */}
                     <li>
                         <div>
                             <time>1937</time> Proin quam velit, efficitur vel neque vitae, rhoncus commodo mi. Suspendisse finibus mauris et bibendum molestie. Aenean ex augue, varius et pulvinar in, pretium non nisi.
