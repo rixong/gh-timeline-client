@@ -45,8 +45,8 @@ class Timeline extends Component {
     render() {
         return <div>
             <section className="timeline">
-            {this.renderTimeline(this.props.repos)}
                 <ul>
+                {this.renderTimeline(this.props.repos)}
                     <li>
                         <div>
                             <time>1934</time> At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium
