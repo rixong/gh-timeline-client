@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
+import '../Timeline.css';
 import moment from 'moment'
-// import '../Timeline.css';
 
 class Timeline extends Component {
 
-    constructor() {
-        super()
-        this.state = {
-        }
-    }
+    // constructor() {
+    //     super()
+    //     this.state = {
+    //     }
+    // }
 
     sortRepoByDate = (repos) => {
         return repos.sort((a,b) => a.localeCompare(b));
@@ -17,7 +17,7 @@ class Timeline extends Component {
     renderRepos = (repos) => {
         return repos.map((value, index) => {
             return <li key={index}>
-                <div >
+                <div className='item-title'>
                 <time>
                     Date: {moment(value.repo_created_at).format('MMMM Do YYYY')}
                 </time>
@@ -65,15 +65,14 @@ class Timeline extends Component {
             <section className="timeline">
                 <ul>
                     {this.renderRepos(this.props.repos)}
-                    {/* {this.renderTimeline(this.props.repos)} */}
-                    {/* Recreate HTML for length of map from li to line 56 comment*/}
-                    {/* <li>
+                    {this.renderTimeline(this.props.repos)}
+                    {/* Recreate HTML for length of map from li to line 56 comment
+                    <li>
                         <div>
                             <time>1934</time> At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium
       </div>
                     </li>
-                    {/* End of li */}
-
+                    End of li */}
                 </ul>
             </section>
         </div>
