@@ -11,11 +11,11 @@ class Timeline extends Component {
     // }
 
     sortRepoByDate = (repos) => {
-        return repos.sort((a,b) => a.localeCompare(b));
+        return repos.sort((a,b) => b.repo_created_at.localeCompare(a.repo_created_at));
     }
 
     renderRepos = (repos) => {
-        return repos.map((value, index) => {
+        return this.sortRepoByDate(repos).map((value, index) => {
             return <li key={index}>
                 <div className='item-title'>
                 <time>
@@ -28,7 +28,7 @@ class Timeline extends Component {
         // console.log('repos rendered')
     }
 
-    renderTimeline = (repos) => {
+    renderTimeline = () => {
 
         // define variables
         var items = document.querySelectorAll(".timeline li");
@@ -65,7 +65,7 @@ class Timeline extends Component {
             <section className="timeline">
                 <ul>
                     {this.renderRepos(this.props.repos)}
-                    {this.renderTimeline(this.props.repos)}
+                    {this.renderTimeline()}
                     {/* Recreate HTML for length of map from li to line 56 comment
                     <li>
                         <div>
