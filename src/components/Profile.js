@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 
 class Profile extends Component {
 
-  state= {
-    searchTerm: ''
+  state = {
+    searchTerm: '',
+    repos: []
   }
 
   handleChange = (e) => {
@@ -15,7 +16,7 @@ class Profile extends Component {
   handleClick = (e) => {
     e.preventDefault();
     console.log(e.target.searchTerm.value);
-    fetch('http://localhost:3000/repos',{
+    fetch('http://localhost:3000/repos', {
       method: "POST",
       headers: {
         Authorization: `Bearer: ${localStorage.getItem('accessToken')}`,
@@ -23,12 +24,15 @@ class Profile extends Component {
         Accept: 'application/json'
       },
       body: JSON.stringify({
-          github_username: this.state.searchTerm
-        })
-  })
-  .then(res => res.json())
-  .then(json => console.log(json))
-  // .then(json => this.props.sendToken(json.jwt))
+        github_username: this.state.searchTerm
+      })
+    })
+      .then(res => res.json())
+      // .then(json => console.log(json))
+      .then(json => this.setState({
+        repos: json
+      }))
+    // .then(json => this.props.sendToken(json.jwt))
   }
 
   render() {
