@@ -10,8 +10,6 @@ class Timeline extends Component {
 
         renderTimeline = () => {
 
-            'use strict';
-
             // define variables
             var items = document.querySelectorAll(".timeline li");
 
