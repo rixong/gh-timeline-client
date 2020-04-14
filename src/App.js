@@ -27,8 +27,8 @@ class App extends Component {
 
   onLogoutClick = () => {
     localStorage.removeItem('accessToken')
-    this.setState({curUser: undefined})
-  } 
+    this.setState({ curUser: undefined })
+  }
 
   addToken = (token) => {
     localStorage.setItem('accessToken', token);
@@ -50,16 +50,22 @@ class App extends Component {
 
     return (
       <Router>
-      <div className="App">
-        <div className="nav-bar">
-        <h1>GitHub Timeline App
-        <LinkButton onClick={this.onLogoutClick} to='/'>Logout</LinkButton></h1>
+        <div className="App">
+          <div className="nav-bar">
+            <div id="header">GitHub Timeline App</div>
+            {this.state.curUser ? 
+            <div id='logged-in-div'>
+              <p>Welcome {this.state.curUser.name}</p>
+              <LinkButton id="logout-btn" onClick={this.onLogoutClick} to='/'>Logout</LinkButton>
+            </div>
+            :
+            null}
+          </div>
+          {this.state.curUser ? null : <Route exact path="/" render={(props) => <Login {...props} sendToken={this.addToken} />} />}
+          {this.state.curUser ? null : <Route exact path="/signup" render={(props) => <NewUser {...props} sendToken={this.addToken} />} />}
+          {this.state.curUser ? <Profile user={this.state.curUser} /> : null}
+          {/* <Timeline /> */}
         </div>
-        {this.state.curUser ? null : <Route exact path="/" render={(props) => <Login {...props} sendToken={this.addToken} />}/>}
-        {this.state.curUser ? null : <Route exact path="/signup" render={(props) => <NewUser {...props} sendToken={this.addToken} />}/>}
-        {this.state.curUser ? <Profile user={this.state.curUser} /> : null}
-        {/* <Timeline /> */}
-      </div>
       </Router>
     );
 

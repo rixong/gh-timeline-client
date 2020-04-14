@@ -38,11 +38,11 @@ class Profile extends Component {
 
   render() {
     return <div className='container'>
-      <div className='profile'>
+      {/* <div className='profile'>
         <h1>Welcome back {this.props.user.name}!</h1>
         <h3>Email:{this.props.user.email}</h3>
         <h3>Github Username: {this.props.user.git_username}</h3>
-      </div>
+      </div> */}
 
       <div className='search'>
 

@@ -17,6 +17,34 @@
   color: #61dafb;
 }
 
+/* Navbar CSS Below */
+
+.nav-bar{
+  display: flex;
+  background-color: gainsboro;
+  height: 60px;
+  justify-content: center;
+
+}
+
+#header {
+  font-size: 2rem;
+  /* -top: 20px; */
+}
+
+#logged-in-div {
+  display: inline-flex;
+  position: relative;
+  left:20%
+}
+
+#logout-btn {
+  position: relative;
+  left: 20%;
+  height: 30px;
+  margin-top: 10px;
+}
+
 /* Timeline CSS Below */
 .timeline ul {
   background: #456990;
