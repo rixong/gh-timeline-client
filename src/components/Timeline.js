@@ -3,17 +3,24 @@ import '../Timeline.css';
 
 class Timeline extends Component {
 
-    constructor() {
-        super()
-        this.state = {
-        }
-    }
+    // constructor() {
+    //     super()
+    //     this.state = {
+    //     }
+    // }
 
     renderRepos = (repos) => {
-        repos.map((value, index) => {
-            return <li key={index}>{value}</li>
+        return repos.map((value, index) => {
+            return <li key={index}>
+                <div className='item-title'>
+                <time>
+                    Date: {moment(value.repo_created_at).format('MMMM Do YYYY')}
+                </time>
+                    Title: {value.name}
+                </div>
+            </li>
         })
-        console.log('repos rendered')
+        // console.log('repos rendered')
     }
 
     renderTimeline = (repos) => {
