@@ -15,6 +15,13 @@ class Timeline extends Component {
         this.setState({ display: true })
     }
 
+    componentDidUpdate(prevProps, prevState) {
+        if (prevState.display) {
+            this.setState({ display: false });
+        }
+    }
+
+
     sortRepoByDate = (repos) => {
         return repos.sort((a, b) => b.repo_created_at.localeCompare(a.repo_created_at));
     }
@@ -35,7 +42,6 @@ class Timeline extends Component {
 
 
     renderTimeline = () => {
-
 
         // define variables
         let items = document.querySelectorAll(".timeline li");

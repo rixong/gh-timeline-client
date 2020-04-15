@@ -4,6 +4,7 @@ import Timeline from './Timeline'
 class Profile extends Component {
 
   state = {
+    inputText: '',
     searchTerm: '',
     repos: [],
     timelines: []
@@ -25,24 +26,31 @@ class Profile extends Component {
       })
   }
 
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.searchTerm !== '') {
+      this.setState({searchTerm: ''})
+    }
+  }
+
   makeSelectionList = () => {
     return this.state.timelines.map((item, idx) => <option key={idx} value={item.name} >{item.name}</option>)
   }
 
-  handleSelectionChange = (e) => {
-    console.log(e.target.value);
-    this.setState({ searchTerm: e.target.value })
-  }
+  // handleSelectionChange = (e) => {
+  //   console.log(e.target.value);
+  //   this.setState({ searchTerm: e.target.value })
+  // }
 
   handleChange = (e) => {
     this.setState({
-      searchTerm: e.target.value
+      inputText: e.target.value
     })
   }
 
   handleClick = (e) => {
     e.preventDefault();
     console.log(e.target.searchTerm.value);
+    this.setState({searchTerm: this.state.inputText}, () => {
     fetch('http://localhost:3000/repos', {
       method: "POST",
       headers: {
@@ -60,6 +68,7 @@ class Profile extends Component {
         repos: json.result
       })
       )
+    })
   }
 
   render() {
@@ -72,7 +81,7 @@ class Profile extends Component {
             type="text"
             name="searchTerm"
             onChange={event => this.handleChange(event)}
-            value={this.state.searchTerm}
+            value={this.state.inputText}
           />
           <button type='submit'>Submit</button>
         </form>
@@ -80,7 +89,7 @@ class Profile extends Component {
           {this.makeSelectionList()}
         </select>
       </div>
-      
+
       {this.state.repos.length > 0 ? <Timeline repos={this.state.repos} /> : null}
 
     </div>
