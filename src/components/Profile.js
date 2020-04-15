@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import '../Profile.css';
 import Timeline from './Timeline'
 
 class Profile extends Component {
