@@ -4,12 +4,16 @@ import moment from 'moment'
 
 class Timeline extends Component {
 
-    // constructor(props) {
-    //     super(props)
-    //     this.state = {
-    //         repos: this.props.repos
-    //     }
-    // }
+    constructor(props) {
+        super(props)
+        this.state = {
+            display: false
+        }
+    }
+
+    componentDidMount() {
+        this.setState({ display: true })
+    }
 
     sortRepoByDate = (repos) => {
         return repos.sort((a, b) => b.repo_created_at.localeCompare(a.repo_created_at));
@@ -17,7 +21,7 @@ class Timeline extends Component {
 
     renderRepos = () => {
         return this.sortRepoByDate(this.props.repos).map((value, index) => {
-            return <li key={index}>
+            return <li key={index} >
                 <div className='item-title'>
                     <time>
                         Date: {moment(value.repo_created_at).format('MMMM Do YYYY')}
@@ -32,16 +36,15 @@ class Timeline extends Component {
 
     renderTimeline = () => {
 
-        // console.log('render gimeline');
 
         // define variables
-        var items = document.querySelectorAll(".timeline li");
-            // console.log(items);
+        let items = document.querySelectorAll(".timeline li");
+        // console.log(items);
 
         // check if an element is in viewport
         // http://stackoverflow.com/questions/123999/how-to-tell-if-a-dom-element-is-visible-in-the-current-viewport
         function isElementInViewport(el) {
-            
+
             var rect = el.getBoundingClientRect();
             return (
                 rect.top >= 0 &&
@@ -52,6 +55,7 @@ class Timeline extends Component {
         }
 
         function callbackFunc() {
+            // console.log(items);
 
             for (var i = 0; i < items.length; i++) {
                 if (isElementInViewport(items[i])) {
@@ -70,9 +74,10 @@ class Timeline extends Component {
     render() {
         return <div>
             <section className="timeline">
+                {/* <button onClick={this.renderTimeline}>Click to view timeline</button> */}
                 <ul>
                     {this.renderRepos()}
-                    {this.renderTimeline()}
+                    {this.state.display ? this.renderTimeline() : null}
                     {/* Recreate HTML for length of map from li to line 56 comment
                     <li>
                         <div>

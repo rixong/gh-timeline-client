@@ -58,15 +58,14 @@ class Profile extends Component {
       // .then(json => console.log(json))
       .then(json => this.setState({
         repos: json.result
-      }))
-    // .then(json => this.props.sendToken(json.jwt))
+      })
+      )
   }
 
   render() {
     return <div className='container'>
 
       <div className='search'>
-
         <form onSubmit={this.handleClick}>
           <label htmlFor='searchTerm'>Search by Github Username</label>
           <input
@@ -81,6 +80,7 @@ class Profile extends Component {
           {this.makeSelectionList()}
         </select>
       </div>
+      
       {this.state.repos.length > 0 ? <Timeline repos={this.state.repos} /> : null}
 
     </div>
