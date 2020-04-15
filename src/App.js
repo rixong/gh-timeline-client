@@ -64,7 +64,6 @@ class App extends Component {
           {this.state.curUser ? null : <Route exact path="/" render={(props) => <Login {...props} sendToken={this.addToken} />} />}
           {this.state.curUser ? null : <Route exact path="/signup" render={(props) => <NewUser {...props} sendToken={this.addToken} />} />}
           {this.state.curUser ? <Profile user={this.state.curUser} /> : null}
-          {/* <Timeline /> */}
         </div>
       </Router>
     );

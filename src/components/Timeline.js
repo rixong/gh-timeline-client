@@ -4,23 +4,24 @@ import moment from 'moment'
 
 class Timeline extends Component {
 
-    // constructor() {
-    //     super()
+    // constructor(props) {
+    //     super(props)
     //     this.state = {
+    //         repos: this.props.repos
     //     }
     // }
 
     sortRepoByDate = (repos) => {
-        return repos.sort((a,b) => b.repo_created_at.localeCompare(a.repo_created_at));
+        return repos.sort((a, b) => b.repo_created_at.localeCompare(a.repo_created_at));
     }
 
-    renderRepos = (repos) => {
-        return this.sortRepoByDate(repos).map((value, index) => {
+    renderRepos = () => {
+        return this.sortRepoByDate(this.props.repos).map((value, index) => {
             return <li key={index}>
                 <div className='item-title'>
-                <time>
-                    Date: {moment(value.repo_created_at).format('MMMM Do YYYY')}
-                </time>
+                    <time>
+                        Date: {moment(value.repo_created_at).format('MMMM Do YYYY')}
+                    </time>
                     Title: {value.name}
                 </div>
             </li>
@@ -28,14 +29,19 @@ class Timeline extends Component {
         // console.log('repos rendered')
     }
 
+
     renderTimeline = () => {
+
+        // console.log('render gimeline');
 
         // define variables
         var items = document.querySelectorAll(".timeline li");
+            // console.log(items);
 
         // check if an element is in viewport
         // http://stackoverflow.com/questions/123999/how-to-tell-if-a-dom-element-is-visible-in-the-current-viewport
         function isElementInViewport(el) {
+            
             var rect = el.getBoundingClientRect();
             return (
                 rect.top >= 0 &&
@@ -46,6 +52,7 @@ class Timeline extends Component {
         }
 
         function callbackFunc() {
+
             for (var i = 0; i < items.length; i++) {
                 if (isElementInViewport(items[i])) {
                     items[i].classList.add("in-view");
@@ -64,13 +71,13 @@ class Timeline extends Component {
         return <div>
             <section className="timeline">
                 <ul>
-                    {this.renderRepos(this.props.repos)}
+                    {this.renderRepos()}
                     {this.renderTimeline()}
                     {/* Recreate HTML for length of map from li to line 56 comment
                     <li>
                         <div>
                             <time>1934</time> At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium
-      </div>
+    </div>
                     </li>
                     End of li */}
                 </ul>

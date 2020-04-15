@@ -113,7 +113,7 @@
    GENERAL MEDIA QUERIES
   ––––––––––––––––––––––––––––––––––––––––––––––––––  */
   
-  /* @media screen and (max-width: 900px) {
+  @media screen and (max-width: 900px) {
     .timeline ul li div {
       width: 250px;
     }
@@ -136,5 +136,5 @@
       left: -15px;
       border-width: 8px 16px 8px 0;
       border-color: transparent #F45B69 transparent transparent;
-    } */
-  /* } */
+    }
+  }

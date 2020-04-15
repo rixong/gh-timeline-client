@@ -5,7 +5,33 @@ class Profile extends Component {
 
   state = {
     searchTerm: '',
-    repos: []
+    repos: [],
+    timelines: []
+  }
+
+  componentDidMount() {
+    fetch('http://localhost:3000/timelines', {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer: ${localStorage.getItem('accessToken')}`,
+        'Content-Type': 'application/json',
+        Accept: 'application/json'
+      }
+    })
+      .then(res => res.json())
+      // .then(json => console.log(json))
+      .then(json => {
+        this.setState({ timelines: json });
+      })
+  }
+
+  makeSelectionList = () => {
+    return this.state.timelines.map((item, idx) => <option key={idx} value={item.name} >{item.name}</option>)
+  }
+
+  handleSelectionChange = (e) => {
+    console.log(e.target.value);
+    this.setState({ searchTerm: e.target.value })
   }
 
   handleChange = (e) => {
@@ -31,18 +57,13 @@ class Profile extends Component {
       .then(res => res.json())
       // .then(json => console.log(json))
       .then(json => this.setState({
-        repos: json
+        repos: json.result
       }))
     // .then(json => this.props.sendToken(json.jwt))
   }
 
   render() {
     return <div className='container'>
-      {/* <div className='profile'>
-        <h1>Welcome back {this.props.user.name}!</h1>
-        <h3>Email:{this.props.user.email}</h3>
-        <h3>Github Username: {this.props.user.git_username}</h3>
-      </div> */}
 
       <div className='search'>
 
@@ -56,8 +77,11 @@ class Profile extends Component {
           />
           <button type='submit'>Submit</button>
         </form>
-        <Timeline repos={this.state.repos}/>
+        <select onChange={this.handleSelectionChange}>
+          {this.makeSelectionList()}
+        </select>
       </div>
+      {this.state.repos.length > 0 ? <Timeline repos={this.state.repos} /> : null}
 
     </div>
 
