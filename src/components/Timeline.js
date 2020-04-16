@@ -31,9 +31,9 @@ class Timeline extends Component {
             return <li key={index} >
                 <div className='item-title'>
                     <time>
-                        Date: {moment(value.repo_created_at).format('MMMM Do YYYY')}
+                        {moment(value.repo_created_at).format('MMMM Do YYYY')}
                     </time>
-                    Title: {value.name}
+                    Repo: {value.name}
                 </div>
             </li>
         })
