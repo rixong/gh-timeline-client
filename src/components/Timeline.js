@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import '../Timeline.css';
 import moment from 'moment'
+import logo from './GitHub-Mark-32px.png';
 
 class Timeline extends Component {
 
@@ -33,7 +34,7 @@ class Timeline extends Component {
                     <time>
                         {moment(value.repo_created_at).format('MMMM Do YYYY')}
                     </time>
-                    Repo: {value.name}
+                        <img src={logo} alt="Github mark logo" /> {value.name}
                 </div>
             </li>
         })
