@@ -37,8 +37,8 @@ class Timeline extends Component {
     }
 
     renderRepos = () => {
-        return this.sortRepoByDate(this.props.repos).map((repo) => {
-            return <li key={repo.git_id} >
+        return this.sortRepoByDate(this.props.repos).map((repo,index) => {
+            return <li key={index} >
                 <div className='item-title' onClick={this.modalToggle}>
                     <timefont>
                     <img src={logo} alt="Github mark logo" /> {repo.name}
