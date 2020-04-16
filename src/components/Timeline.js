@@ -37,11 +37,11 @@ class Timeline extends Component {
     }
 
     renderRepos = () => {
-        return this.sortRepoByDate(this.props.repos).map((repo, index) => {
-            return <li key={index} >
+        return this.sortRepoByDate(this.props.repos).map((repo) => {
+            return <li key={repo.git_id} >
                 <div className='item-title' onClick={this.modalToggle}>
                     <timefont>
-                       <img src={logo} alt="Github mark logo" /> {repo.name}
+                    <img src={logo} alt="Github mark logo" /> {repo.name}
                     </timefont>
                     <br></br>
                     <time>
@@ -50,7 +50,8 @@ class Timeline extends Component {
                     <timesub>
                     <span role="img" aria-label="recycling-symbol"> ♻️</span> {moment(repo.repo_updated_at).startOf('day').fromNow()}
                     </timesub>
-                    <Modal repo={repo} modalState={this.state.modal}/>
+                    {/* <Modal repo={repo} modalState={this.state.modal}/> */}
+                    <Modal repo={repo}/>
                 </div>
             </li>
         })
@@ -95,9 +96,14 @@ class Timeline extends Component {
     };
 
     render() {
+
+
+        // document.querySelectorAll(".timeline li").forEach(el => el.classList.remove)
+        
+
+
         return <div>
             <section className="timeline">
-                {/* <button onClick={this.renderTimeline}>Click to view timeline</button> */}
                 <ul>
                     {this.renderRepos()}
                     {this.state.display ? this.renderTimeline() : null}
