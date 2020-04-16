@@ -36,10 +36,10 @@ class Profile extends Component {
     return this.state.timelines.map((item, idx) => <option key={idx} value={item.name} >{item.name}</option>)
   }
 
-  // handleSelectionChange = (e) => {
-  //   console.log(e.target.value);
-  //   this.setState({ searchTerm: e.target.value })
-  // }
+  handleSelectionChange = (e) => {
+    console.log(e.target.value);
+    this.setState({ searchTerm: e.target.value })
+  }
 
   handleChange = (e) => {
     this.setState({
