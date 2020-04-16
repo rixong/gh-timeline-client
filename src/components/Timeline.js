@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import '../Timeline.css';
+import RenderTimeline from './RenderTimeline'
 import moment from 'moment'
 import logo from './GitHub-Mark-32px.png';
 
@@ -89,6 +90,7 @@ class Timeline extends Component {
             <section className="timeline">
                 {/* <button onClick={this.renderTimeline}>Click to view timeline</button> */}
                 <ul>
+                    < RenderTimeline />
                     {this.renderRepos()}
                     {this.state.display ? this.renderTimeline() : null}
                     {/* Recreate HTML for length of map from li to line 56 comment
