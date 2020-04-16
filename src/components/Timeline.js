@@ -34,7 +34,7 @@ class Timeline extends Component {
                     <time>
                         {moment(value.repo_created_at).format('MMMM Do YYYY')}
                     </time>
-                        <img src={logo} alt="Github mark logo" /> {value.name}
+                        <a href={value.html_url}> <img src={logo} alt="Github mark logo" /> {value.name} </a>
                 </div>
             </li>
         })
