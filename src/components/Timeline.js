@@ -36,10 +36,10 @@ class Timeline extends Component {
                     </timefont>
                     <br></br>
                     <time>
-                        🐣 {moment(value.repo_created_at).format('MMMM Do YYYY')}
+                    <span role="img" aria-label="hatching-chick">🐣</span> {moment(value.repo_created_at).format('MMMM Do YYYY')}
                     </time>
                     <timesub>
-                        ♻️ {moment(value.repo_updated_at).startOf('day').fromNow()}
+                    <span role="img" aria-label="recycling-symbol"> ♻️</span> {moment(value.repo_updated_at).startOf('day').fromNow()}
                     </timesub>
                 </div>
             </li>
