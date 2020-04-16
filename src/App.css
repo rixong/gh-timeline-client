@@ -67,7 +67,8 @@ left: 0%;
 }
 
 #search-form label {
-  margin-right: 10px;;
+  margin-right: 10px;
+  color: rgb(233, 233, 233)
 }
 
 #search-form input {

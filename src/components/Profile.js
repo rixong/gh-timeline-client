@@ -74,7 +74,29 @@ class Profile extends Component {
   render() {
     return <div className='container'>
 
-      <div className='search'>
+<div id='search-bar'>
+        <div id="timeline-selector">
+          <select onChange={this.handleSelectionChange}>
+            <option value='' >Saved Timelines</option>
+            {this.makeSelectionList()}
+          </select>
+        </div>
+        <div id="search-form">
+          <form onSubmit={this.handleClick}>
+            <label htmlFor='searchTerm'>Search by Github Username</label>
+            <input
+              type="text"
+              name="searchTerm"
+              onChange={event => this.handleChange(event)}
+              value={this.state.inputText}
+            />
+            <button type='submit'>Submit</button>
+          </form>
+        </div>
+      </div>
+
+
+      {/* <div className='search'>
         <form onSubmit={this.handleClick}>
           <label htmlFor='searchTerm'>Search by Github Username</label>
           <input
@@ -88,7 +110,7 @@ class Profile extends Component {
         <select onChange={this.handleSelectionChange}>
           {this.makeSelectionList()}
         </select>
-      </div>
+      </div> */}
 
       {this.state.repos.length > 0 ? <Timeline repos={this.state.repos} /> : null}
 
