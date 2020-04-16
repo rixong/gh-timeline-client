@@ -63,3 +63,25 @@ handleClick = (e) => {
       )
   })
 }
+
+
+<div id='search-bar'>
+<div id="timeline-selector">
+  <select onChange={this.handleSelectionChange}>
+    <option value='' >Saved Timelines</option>
+    {this.makeSelectionList()}
+  </select>
+</div>
+<div id="search-form">
+  <form onSubmit={this.handleClick}>
+    <label htmlFor='searchTerm'>Search by Github Username</label>
+    <input
+      type="text"
+      name="searchTerm"
+      onChange={event => this.handleChange(event)}
+      value={this.state.inputText}
+    />
+    <button type='submit'>Submit</button>
+  </form>
+</div>
+</div>

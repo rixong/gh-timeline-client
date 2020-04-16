@@ -103,23 +103,6 @@ class Profile extends Component {
         </div>
       </div>
 
-
-      {/* <div className='search'>
-        <form onSubmit={this.handleClick}>
-          <label htmlFor='searchTerm'>Search by Github Username</label>
-          <input
-            type="text"
-            name="searchTerm"
-            onChange={event => this.handleChange(event)}
-            value={this.state.inputText}
-          />
-          <button type='submit'>Submit</button>
-        </form>
-        <select onChange={this.handleSelectionChange}>
-          {this.makeSelectionList()}
-        </select>
-      </div> */}
-
       {this.state.repos.length > 0 ? <Timeline repos={this.state.repos} /> : null}
 
     </div>
