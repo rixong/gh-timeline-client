@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import '../Timeline.css';
+import Modal from './Modal.js';
 import moment from 'moment'
 import logo from './GitHub-Mark-32px.png';
 
@@ -22,25 +23,30 @@ class Timeline extends Component {
         }
     }
 
-
     sortRepoByDate = (repos) => {
         return repos.sort((a, b) => b.repo_created_at.localeCompare(a.repo_created_at));
     }
 
+    // getRepoDetails = (e) => {
+    //     console.log("get info")
+    //     return this.props.repos[0]
+    // }
+
     renderRepos = () => {
-        return this.sortRepoByDate(this.props.repos).map((value, index) => {
+        return this.sortRepoByDate(this.props.repos).map((repo, index) => {
             return <li key={index} >
-                <div className='item-title'>
+                <div className='item-title' data-id={repo.git_id}>
                     <timefont>
-                        <a href={value.html_url} target="_blank" rel="noopener noreferrer"> <img src={logo} alt="Github mark logo" /> {value.name} </a>
+                        <a href={repo.html_url} target="_blank" rel="noopener noreferrer"> <img src={logo} alt="Github mark logo" /> {repo.name} </a>
                     </timefont>
                     <br></br>
                     <time>
-                    <span role="img" aria-label="hatching-chick">🐣</span> {moment(value.repo_created_at).format('MMMM Do YYYY')}
+                    <span role="img" aria-label="hatching-chick">🐣</span> {moment(repo.repo_created_at).format('MMMM Do YYYY')}
                     </time>
                     <timesub>
-                    <span role="img" aria-label="recycling-symbol"> ♻️</span> {moment(value.repo_updated_at).startOf('day').fromNow()}
+                    <span role="img" aria-label="recycling-symbol"> ♻️</span> {moment(repo.repo_updated_at).startOf('day').fromNow()}
                     </timesub>
+                    <Modal repo={repo} />
                 </div>
             </li>
         })
