@@ -41,6 +41,13 @@ class Profile extends Component {
     this.setState({ searchTerm: e.target.value })
   }
 
+  handleSelectionChange = (e) => {
+    console.log(e.target.value);
+    this.setState({ 
+      inputText: e.target.value ,
+    }, () => this.handleClick(e))
+  }
+
   handleChange = (e) => {
     this.setState({
       inputText: e.target.value
@@ -49,25 +56,26 @@ class Profile extends Component {
 
   handleClick = (e) => {
     e.preventDefault();
-    console.log(e.target.searchTerm.value);
-    this.setState({searchTerm: this.state.inputText}, () => {
-    fetch('http://localhost:3000/repos', {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer: ${localStorage.getItem('accessToken')}`,
-        'Content-Type': 'application/json',
-        Accept: 'application/json'
-      },
-      body: JSON.stringify({
-        github_username: this.state.searchTerm
+    // console.log(e.target.searchTerm.value);
+    this.setState({ searchTerm: this.state.inputText }, () => {
+      fetch('http://localhost:3000/repos', {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer: ${localStorage.getItem('accessToken')}`,
+          'Content-Type': 'application/json',
+          Accept: 'application/json'
+        },
+        body: JSON.stringify({
+          github_username: this.state.searchTerm
+        })
       })
-    })
-      .then(res => res.json())
-      // .then(json => console.log(json))
-      .then(json => this.setState({
-        repos: json.result
-      })
-      )
+        .then(res => res.json())
+        // .then(json => console.log(json))
+        .then(json => this.setState({
+          repos: json.result,
+          inputText: ''
+        })
+        )
     })
   }
 
