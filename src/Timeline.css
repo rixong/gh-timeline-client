@@ -39,6 +39,7 @@
     width: 400px;
     padding: 7px;
     background: #F45B69;
+    cursor: pointer;
   }
   
   .timeline ul li div::before {

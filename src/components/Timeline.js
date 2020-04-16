@@ -9,7 +9,8 @@ class Timeline extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            display: false
+            display: false,
+            modal: false
         }
     }
 
@@ -27,17 +28,20 @@ class Timeline extends Component {
         return repos.sort((a, b) => b.repo_created_at.localeCompare(a.repo_created_at));
     }
 
-    // getRepoDetails = (e) => {
-    //     console.log("get info")
-    //     return this.props.repos[0]
-    // }
+    modalToggle = () => {
+        console.log("Toggle");
+        
+        this.setState({
+            modal: !this.state.modal
+        })
+    }
 
     renderRepos = () => {
         return this.sortRepoByDate(this.props.repos).map((repo, index) => {
             return <li key={index} >
-                <div className='item-title' data-id={repo.git_id}>
+                <div className='item-title' onClick={this.modalToggle}>
                     <timefont>
-                        <a href={repo.html_url} target="_blank" rel="noopener noreferrer"> <img src={logo} alt="Github mark logo" /> {repo.name} </a>
+                       <img src={logo} alt="Github mark logo" /> {repo.name}
                     </timefont>
                     <br></br>
                     <time>
@@ -46,7 +50,7 @@ class Timeline extends Component {
                     <timesub>
                     <span role="img" aria-label="recycling-symbol"> ♻️</span> {moment(repo.repo_updated_at).startOf('day').fromNow()}
                     </timesub>
-                    <Modal repo={repo} />
+                    <Modal repo={repo} modalState={this.state.modal}/>
                 </div>
             </li>
         })

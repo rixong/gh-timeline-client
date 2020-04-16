@@ -1,9 +1,9 @@
 import React from 'react'
-import { Button, Header, Image, Modal } from 'semantic-ui-react'
+import { Button, Header, Modal } from 'semantic-ui-react'
 import moment from 'moment'
 
 const ModalModalExample = (props) => (
-  <Modal size='tiny' trigger={<Button>Show Details</Button>}>
+  <Modal size='tiny' open={props.modalState}>
     <Modal.Header></Modal.Header>
     <Modal.Content image>
       {/* <Image wrapped size='medium' src='/images/avatar/large/rachel.png' /> */}
