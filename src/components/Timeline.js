@@ -32,9 +32,13 @@ class Timeline extends Component {
             return <li key={index} >
                 <div className='item-title'>
                     <time>
-                        {moment(value.repo_created_at).format('MMMM Do YYYY')}
+                        🐣 {moment(value.repo_created_at).format('MMMM Do YYYY')}
+                        <br></br>
                     </time>
-                        <a href={value.html_url} target="_blank" rel="noopener noreferrer"> <img src={logo} alt="Github mark logo" /> {value.name} </a>
+                    <timesub>
+                        ♻️ {moment(value.repo_updated_at).format('MMMM Do YYYY')}
+                    </timesub>
+                    <a href={value.html_url} target="_blank" rel="noopener noreferrer"> <img src={logo} alt="Github mark logo" /> {value.name} </a>
                 </div>
             </li>
         })
