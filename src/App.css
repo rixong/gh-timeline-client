@@ -51,6 +51,10 @@ html, body {
   margin-top: 10px;
 }
 
+#login-page {
+  color:whitesmoke;
+}
+
 /* Search Bar */
 
 #search-bar {

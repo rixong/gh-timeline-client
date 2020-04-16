@@ -40,7 +40,7 @@ handleLoginSubmit = (e) => {
 }
 
   render() {
-    return <div>
+    return <div id="login-page">
 
       <h2>Existing User?</h2>
       <form onSubmit={this.handleLoginSubmit}>
