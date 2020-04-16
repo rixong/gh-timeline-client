@@ -71,18 +71,26 @@
   }
   
   time {
-    display: block;
-    font-size: 2.0rem;
+    display: inline-flex;
+    font-size: 1.1rem;
     font-weight: bold;
-    margin-bottom: 8px;
+    text-align: left
   }
 
   timesub {
-    display: block;
-    font-size: 1.5rem;
+    display: inline-flex;
+    font-size: 1.1rem;
     font-weight: bold;
     margin-bottom: 8px;
+    text-align: right
   }
+
+  timefont {
+    display: inline-flex;
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
+
   
   
   /* EFFECTS

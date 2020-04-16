@@ -31,14 +31,16 @@ class Timeline extends Component {
         return this.sortRepoByDate(this.props.repos).map((value, index) => {
             return <li key={index} >
                 <div className='item-title'>
+                    <timefont>
+                        <a href={value.html_url} target="_blank" rel="noopener noreferrer"> <img src={logo} alt="Github mark logo" /> {value.name} </a>
+                    </timefont>
+                    <br></br>
                     <time>
                         🐣 {moment(value.repo_created_at).format('MMMM Do YYYY')}
-                        <br></br>
                     </time>
                     <timesub>
-                        ♻️ {moment(value.repo_updated_at).format('MMMM Do YYYY')}
+                        ♻️ {moment(value.repo_updated_at).startOf('day').fromNow()}
                     </timesub>
-                    <a href={value.html_url} target="_blank" rel="noopener noreferrer"> <img src={logo} alt="Github mark logo" /> {value.name} </a>
                 </div>
             </li>
         })
