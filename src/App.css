@@ -51,3 +51,32 @@ html, body {
   margin-top: 10px;
 }
 
+/* Search Bar */
+
+#search-bar {
+  display: inline-flex;
+  position: relative;
+  padding: 20px;
+}
+
+#search-form {
+position: relative;
+left: 0%;
+/* display: ; */
+/* float: right; */
+}
+
+#search-form label {
+  margin-right: 10px;;
+}
+
+#search-form input {
+  margin-right: 10px;;
+}
+
+#timeline-selector {
+  position: relative;
+  margin-left: 40px;
+  /* float: left; */
+  right: 30%;
+}
