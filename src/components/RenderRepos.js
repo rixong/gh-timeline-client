@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class RenderTimeline extends Component {
+class RenderRepos extends Component {
 
   constructor() {
     super()
@@ -11,8 +11,8 @@ class RenderTimeline extends Component {
 
   render() {
     return <div>
-        <p>RenderTimeline</p>
+        <p>RenderRepos</p>
     </div>
   }
 }
-export default RenderTimeline;
+export default RenderRepos;

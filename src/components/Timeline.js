@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import '../Timeline.css';
 import RenderTimeline from './RenderTimeline'
+import RenderRepos from './RenderRepos'
 import moment from 'moment'
 import logo from './GitHub-Mark-32px.png';
 
@@ -90,6 +91,7 @@ class Timeline extends Component {
             <section className="timeline">
                 {/* <button onClick={this.renderTimeline}>Click to view timeline</button> */}
                 <ul>
+                    < RenderRepos />
                     < RenderTimeline />
                     {this.renderRepos()}
                     {this.state.display ? this.renderTimeline() : null}
