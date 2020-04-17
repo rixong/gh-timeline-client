@@ -74,11 +74,12 @@
   time {
     display: inline-flex;
     font-size: 1.1rem;
-    font-weight: bold;
+    /* font-weight: bold; */
     text-align: left
   }
 
-  timesub {
+
+  /* #timesub {
     display: inline-flex;
     font-size: 1.1rem;
     font-weight: bold;
@@ -86,11 +87,11 @@
     text-align: right
   }
 
-  timefont {
+  #timefont {
     display: inline-flex;
     font-size: 1.2rem;
     font-weight: bold;
-  }
+  } */
 
   
   

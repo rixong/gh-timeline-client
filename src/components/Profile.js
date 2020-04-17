@@ -60,9 +60,7 @@ class Profile extends Component {
     this.setState({ searchTerm: this.state.inputText }, () => this.fetchRepos())
   }
 
-  fetchRepos = () => {
-    console.log('fetch');
-    
+  fetchRepos = () => {    
     fetch('http://localhost:3000/repos', {
       method: "POST",
       headers: {

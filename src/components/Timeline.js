@@ -9,7 +9,7 @@ class Timeline extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            display: false,
+            // display: false,
             modal: false
         }
     }
@@ -18,11 +18,11 @@ class Timeline extends Component {
         this.setState({ display: true })
     }
 
-    componentDidUpdate(prevProps, prevState) {
-        if (prevState.display) {
-            this.setState({ display: false });
-        }
-    }
+    // componentDidUpdate(prevProps, prevState) {
+    //     if (prevState.display) {
+    //         this.setState({ display: false });
+    //     }
+    // }
 
     sortRepoByDate = (repos) => {
         return repos.sort((a, b) => b.repo_created_at.localeCompare(a.repo_created_at));
@@ -37,20 +37,16 @@ class Timeline extends Component {
     }
 
     renderRepos = () => {
-        return this.sortRepoByDate(this.props.repos).map((repo,index) => {
-            return <li key={index} >
+        return this.sortRepoByDate(this.props.repos).map((repo) => {
+            return <li key={repo.git_id} >
                 <div className='item-title' onClick={this.modalToggle}>
-                    <timefont>
-                    <img src={logo} alt="Github mark logo" /> {repo.name}
-                    </timefont>
-                    <br></br>
                     <time>
+                    <img src={logo} alt="Github mark logo" /> {repo.name}
+                    {/* <br></br> */}
                     <span role="img" aria-label="hatching-chick">🐣</span> {moment(repo.repo_created_at).format('MMMM Do YYYY')}
-                    </time>
-                    <timesub>
                     <span role="img" aria-label="recycling-symbol"> ♻️</span> {moment(repo.repo_updated_at).startOf('day').fromNow()}
-                    </timesub>
-                    {/* <Modal repo={repo} modalState={this.state.modal}/> */}
+                    </time>
+
                     <Modal repo={repo}/>
                 </div>
             </li>
@@ -106,7 +102,8 @@ class Timeline extends Component {
             <section className="timeline">
                 <ul>
                     {this.renderRepos()}
-                    {this.state.display ? this.renderTimeline() : null}
+                    {this.renderTimeline()}
+                    {/* {this.state.display ? this.renderTimeline() : null} */}
                     {/* Recreate HTML for length of map from li to line 56 comment
                     <li>
                         <div>
