@@ -17,15 +17,15 @@ class NewUser extends Component {
 
   handleChange = e => {
     this.setState({
-        [e.target.name]: e.target.value
+      [e.target.name]: e.target.value
     })
-}
+  }
 
   handleSubmit = e => {
     e.preventDefault();
     console.log('create user here');
-  
-    fetch('http://localhost:3000/api/v1/users',{
+
+    fetch('http://localhost:3000/api/v1/users', {
       method: "POST",
       headers: {
         'Content-Type': 'application/json',
@@ -40,60 +40,73 @@ class NewUser extends Component {
           git_username: this.state.git_username,
           git_id: this.state.git_id
         }
+      })
     })
-  })
-  .then(res => res.json())
-  // .then(json => console.log(json.jwt))
-  .then(json => {
-    this.props.sendToken(json.jwt)
-  })
-}
+      .then(res => res.json())
+      // .then(json => console.log(json.jwt))
+      .then(json => {
+        this.props.sendToken(json.jwt)
+      })
+  }
 
   render() {
-    return <div>
+    return <div id="new-user-container">
 
-      <h2>New User</h2>
-      <form onSubmit={this.handleSubmit}>
-        <label htmlFor='email'>Email</label>
-        <input
-          type="text"
-          name="email"
-          onChange={event => this.handleChange(event)}
-          value={this.state.email}
+      <h2>New User Signup</h2>
+      <form className="ui inverted form" onSubmit={this.handleSubmit}>
+
+        <div className='field'>
+          <label htmlFor='email'>Email</label>
+          <input
+            type="text"
+            name="email"
+            onChange={event => this.handleChange(event)}
+            value={this.state.email}
           />
+        </div>
 
-        <label htmlFor='password'>Password</label>
-        <input
-          type="text"
-          name="password"
-          onChange={event => this.handleChange(event)}
-          value={this.state.password}
+        <div className='two fields'>
+          <div className='field'>
+            <label htmlFor='password'>Password</label>
+            <input
+              type="text"
+              name="password"
+              onChange={event => this.handleChange(event)}
+              value={this.state.password}
+            />
+          </div>
+          <div className='field'>
+            <label htmlFor='password_confirmation'>Confirm Password</label>
+            <input
+              type="text"
+              name="password_confirmation"
+              onChange={event => this.handleChange(event)}
+              value={this.state.password_confirmation}
+            />
+          </div>
+        </div>
+
+        <div className='field'>
+          <label htmlFor='name'>Name</label>
+          <input
+            type="text"
+            name="name"
+            onChange={event => this.handleChange(event)}
+            value={this.state.name}
           />
+        </div>
 
-        <label htmlFor='password_confirmation'>Confirm Password</label>
-        <input
-          type="text"
-          name="password_confirmation"
-          onChange={event => this.handleChange(event)}
-          value={this.state.password_confirmation}
+        <div className='field'>
+          <label htmlFor='git_username'>Github Username</label>
+          <input
+            type="text"
+            name="git_username"
+            onChange={event => this.handleChange(event)}
+            value={this.state.git_username}
           />
+        </div>
 
-        <label htmlFor='name'>Name</label>
-        <input
-          type="text"
-          name="name"
-          onChange={event => this.handleChange(event)}
-          value={this.state.name}
-        />
-
-        <label htmlFor='git_username'>Github Username</label>
-        <input
-          type="text"
-          name="git_username"
-          onChange={event => this.handleChange(event)}
-          value={this.state.git_username}
-        />
-
+        <br></br>
         <LinkButton to='/signup'>Signup</LinkButton>
 
       </form>

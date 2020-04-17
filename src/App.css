@@ -1,4 +1,5 @@
-html, body {
+html,
+body {
   background: #456990;
   width: 100%;
   height: 100%;
@@ -8,7 +9,8 @@ html, body {
   text-align: center;
 }
 
-.App-header {
+/* .App-header {
+  padding-top: 20px;
   background-color: whitesmoke;
   min-height: 10vh;
   display: flex;
@@ -21,14 +23,16 @@ html, body {
 
 .App-link {
   color: #61dafb;
-}
+} */
+
 
 /* Navbar CSS Below */
 
-.nav-bar{
+.nav-bar {
   display: flex;
   background-color: gainsboro;
-  height: 60px;
+  height: 80px;
+  padding-top: 20px;
   justify-content: center;
 
 }
@@ -41,7 +45,7 @@ html, body {
 #logged-in-div {
   display: inline-flex;
   position: relative;
-  left:20%
+  left: 20%
 }
 
 #logout-btn {
@@ -51,8 +55,22 @@ html, body {
   margin-top: 10px;
 }
 
-#login-page {
-  color:whitesmoke;
+/* Login Page */
+
+#login-container {
+  margin: auto;
+  color: whitesmoke;
+  width: 400px;
+  padding: 30px;
+}
+
+/* New User Form styling */
+
+#new-user-container {
+  margin: auto;
+  color: whitesmoke;
+  width: 400px;
+  padding: 30px;
 }
 
 /* Search Bar */
@@ -64,10 +82,10 @@ html, body {
 }
 
 #search-form {
-position: relative;
-left: 0%;
-/* display: ; */
-/* float: right; */
+  position: relative;
+  left: 0%;
+  /* display: ; */
+  /* float: right; */
 }
 
 #search-form label {
@@ -76,7 +94,8 @@ left: 0%;
 }
 
 #search-form input {
-  margin-right: 10px;;
+  margin-right: 10px;
+  ;
 }
 
 #timeline-selector {

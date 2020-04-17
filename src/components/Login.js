@@ -40,10 +40,11 @@ handleLoginSubmit = (e) => {
 }
 
   render() {
-    return <div id="login-page">
+    return <div id="login-container">
 
       <h2>Existing User?</h2>
-      <form onSubmit={this.handleLoginSubmit}>
+      <form className="ui form inverted" onSubmit={this.handleLoginSubmit}>
+        <div className="field">
         <label htmlFor='email'>Email</label>
         <input
           type="text"
@@ -51,7 +52,9 @@ handleLoginSubmit = (e) => {
           onChange={event => this.handleChange(event)}
           value={this.state.email}
           />
+        </div>
 
+        <div className="field">
         <label htmlFor='password'>Password</label>
         <input
           type="text"
@@ -59,31 +62,22 @@ handleLoginSubmit = (e) => {
           onChange={event => this.handleChange(event)}
           value={this.state.password}
           />
-
+        </div>
+        <br></br>
         <button type="submit">Login</button>
       </form>
+        <br></br>
+        <br></br>
+
       <div>
       <h2>New User?</h2>
       <LinkButton to='/signup'>Signup</LinkButton>
-
-      {/* Creates link text rather than link button:
-        <button type="submit">Login</button>
-        </form>
-        <div>
-          <h2>New User?</h2>
-          <Link
-            className="btn btn-pink"
-            role="button"
-            to="/signup"
-          >
-            Signup
-          </Link> */}
       </div>
       
-      <div>
+      {/* <div>
         <h2>About Github Timeline App</h2>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-      </div>
+      </div> */}
     </div>
   }
 }
