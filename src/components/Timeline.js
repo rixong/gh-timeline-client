@@ -41,7 +41,7 @@ class Timeline extends Component {
             return <li key={index} >
                 <div className='item-title' onClick={this.modalToggle}>
                     <timefont>
-                    <img src={logo} alt="Github mark logo" /> {repo.name}
+                    {repo.name}
                     </timefont>
                     <br></br>
                     <time>
@@ -51,6 +51,7 @@ class Timeline extends Component {
                     <span role="img" aria-label="recycling-symbol"> ♻️</span> {moment(repo.repo_updated_at).startOf('day').fromNow()}
                     </timesub>
                     {/* <Modal repo={repo} modalState={this.state.modal}/> */}
+                    <br></br>
                     <Modal repo={repo}/>
                 </div>
             </li>

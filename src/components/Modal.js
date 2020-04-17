@@ -1,9 +1,10 @@
 import React from 'react'
 import { Button, Header, Modal } from 'semantic-ui-react'
 import moment from 'moment'
+import logo from './GitHub-Mark-32px.png';
 
 const ModalModalExample = (props) => (
-  <Modal trigger={<Button>Show Modal</Button>}>
+  <Modal trigger={<Button><img className='gh-image' src={logo} alt="Github mark logo" /></Button>}>
     {/* <Modal.Header>Select a Photo</Modal.Header> */}
     <Modal.Content image>
       <Modal.Description>
