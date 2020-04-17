@@ -8,6 +8,7 @@ import Profile from './components/Profile'
 import LinkButton from './components/LinkButton'
 // import Timeline from './components/Timeline'
 import { BrowserRouter as Router, Route } from 'react-router-dom';
+import logo from './components/GitHub-Mark-32px.png';
 
 
 class App extends Component {
@@ -52,7 +53,7 @@ class App extends Component {
       <Router>
         <div className="App">
           <div className="nav-bar">
-            <div id="header">GitHub Timeline App</div>
+            <div id="header">GitTimeline<img className='gh-navbar' src={logo} alt="Github mark logo" /></div>
             {this.state.curUser ? 
             <div id='logged-in-div'>
               <p>Welcome {this.state.curUser.name}</p>
