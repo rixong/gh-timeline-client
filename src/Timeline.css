@@ -13,6 +13,7 @@
   }
   
   .timeline ul li {
+    font-family: 'Lato', sans-serif;
     list-style-type: none;
     position: relative;
     width: 6px;
@@ -72,21 +73,22 @@
   }
   
   time {
+    font-family: 'Lato', sans-serif;
     display: inline-flex;
     font-size: 1.3rem;
-    font-weight: bold;
     text-align: left
   }
 
   timesub {
+    font-family: 'Lato', sans-serif;
     display: inline-flex;
     font-size: 1.3rem;
-    font-weight: bold;
     margin-bottom: 8px;
     text-align: right
   }
 
   timefont {
+    font-family: 'Lato', sans-serif;
     display: inline-flex;
     font-size: 1.5rem;
     font-weight: bold;

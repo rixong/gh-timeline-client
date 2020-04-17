@@ -6,9 +6,11 @@ html, body {
 
 .App {
   text-align: center;
+  font-family: 'Lato', sans-serif;
 }
 
 .App-header {
+  font-family: 'Lato', sans-serif;
   background-color: whitesmoke;
   min-height: 10vh;
   display: flex;
@@ -20,12 +22,14 @@ html, body {
 }
 
 .App-link {
+  font-family: 'Lato', sans-serif;
   color: #61dafb;
 }
 
 /* Navbar CSS Below */
 
 .nav-bar{
+  font-family: 'Lato', sans-serif;
   display: flex;
   background-color: gainsboro;
   height: 60px;
@@ -34,6 +38,7 @@ html, body {
 }
 
 #header {
+  font-family: 'Lato', sans-serif;
   font-size: 2rem;
   /* -top: 20px; */
 }
