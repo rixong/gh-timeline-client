@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import '../Timeline.css';
-import Modal from './Modal.js';
+import ModalContainer from './ModalContainer.js';
 import moment from 'moment'
 import logo from './GitHub-Mark-32px.png';
 
@@ -9,37 +9,35 @@ class Timeline extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            // display: false,
-            modal: false
+            clickedRepo: 0,
+            modalDisplay: false
         }
     }
-
-    componentDidMount() {
-        this.setState({ display: true })
-    }
-
-    // componentDidUpdate(prevProps, prevState) {
-    //     if (prevState.display) {
-    //         this.setState({ display: false });
-    //     }
-    // }
 
     sortRepoByDate = (repos) => {
         return repos.sort((a, b) => b.repo_created_at.localeCompare(a.repo_created_at));
     }
 
-    modalToggle = () => {
-        console.log("Toggle");
+    /// Grabs specific git_id from click event. Sets state with that ID (if modal is closed) and flips modalDisplay state to true. 
+    /// Both elements of state are passed to Modal Container where they are evaluated (if 'clickedRepo' = 'github_id'), and passed to Modal (true or false)
+    modalToggle = (e) => {
+
+        let ele = e.target.closest('.item-title')
+        let id = 0;
+        if (ele) {
+            id = ele.dataset.id
+        } 
         
         this.setState({
-            modal: !this.state.modal
+            modalDisplay: !this.state.modalDisplay,
+            clickedRepo: id
         })
     }
 
     renderRepos = () => {
         return this.sortRepoByDate(this.props.repos).map((repo) => {
             return <li key={repo.git_id} >
-                <div className='item-title' onClick={this.modalToggle}>
+                <div className='item-title' data-id={repo.git_id} onClick={this.modalToggle}>
                     <time>
                     <img src={logo} alt="Github mark logo" /> {repo.name}
                     {/* <br></br> */}
@@ -47,7 +45,7 @@ class Timeline extends Component {
                     <span role="img" aria-label="recycling-symbol"> ♻️</span> {moment(repo.repo_updated_at).startOf('day').fromNow()}
                     </time>
 
-                    <Modal repo={repo}/>
+                    <ModalContainer repo={repo} clicked={this.state}/>
                 </div>
             </li>
         })
@@ -84,7 +82,6 @@ class Timeline extends Component {
             }
         }
 
-        // listen for events
         window.addEventListener("load", callbackFunc);
         window.addEventListener("resize", callbackFunc);
         window.addEventListener("scroll", callbackFunc);
@@ -92,25 +89,12 @@ class Timeline extends Component {
     };
 
     render() {
-
-
-        // document.querySelectorAll(".timeline li").forEach(el => el.classList.remove)
         
-
-
         return <div>
             <section className="timeline">
                 <ul>
                     {this.renderRepos()}
                     {this.renderTimeline()}
-                    {/* {this.state.display ? this.renderTimeline() : null} */}
-                    {/* Recreate HTML for length of map from li to line 56 comment
-                    <li>
-                        <div>
-                            <time>1934</time> At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium
-    </div>
-                    </li>
-                    End of li */}
                 </ul>
             </section>
         </div>
