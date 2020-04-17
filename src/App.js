@@ -52,10 +52,10 @@ class App extends Component {
       <Router>
         <div className="App">
           <div className="nav-bar">
-            <div id="header"><a href="http://localhost:3001/">GitLine</a></div>
+            <div id="header"><a href="http://localhost:3001/">	← GitLine →</a></div>
             {this.state.curUser ?
               <div id='logged-in-div'>
-                <p>Welcome {this.state.curUser.name}</p>
+                <div id="welcome"> Welcome {this.state.curUser.name}</div>
                 <LinkButton id="logout-btn" onClick={this.onLogoutClick} to='/'>Logout</LinkButton>
               </div>
               :

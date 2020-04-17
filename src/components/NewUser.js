@@ -69,7 +69,7 @@ class NewUser extends Component {
           <div className='field'>
             <label htmlFor='password'>Password</label>
             <input
-              type="text"
+              type="password"
               name="password"
               onChange={event => this.handleChange(event)}
               value={this.state.password}
@@ -78,7 +78,7 @@ class NewUser extends Component {
           <div className='field'>
             <label htmlFor='password_confirmation'>Confirm Password</label>
             <input
-              type="text"
+              type="password"
               name="password_confirmation"
               onChange={event => this.handleChange(event)}
               value={this.state.password_confirmation}
