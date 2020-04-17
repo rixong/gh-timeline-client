@@ -52,14 +52,14 @@ class App extends Component {
       <Router>
         <div className="App">
           <div className="nav-bar">
-            <div id="header">GitHub Timeline App</div>
-            {this.state.curUser ? 
-            <div id='logged-in-div'>
-              <p>Welcome {this.state.curUser.name}</p>
-              <LinkButton id="logout-btn" onClick={this.onLogoutClick} to='/'>Logout</LinkButton>
-            </div>
-            :
-            null}
+            <div id="header"><a href="http://localhost:3001/">GitLine</a></div>
+            {this.state.curUser ?
+              <div id='logged-in-div'>
+                <p>Welcome {this.state.curUser.name}</p>
+                <LinkButton id="logout-btn" onClick={this.onLogoutClick} to='/'>Logout</LinkButton>
+              </div>
+              :
+              null}
           </div>
           {this.state.curUser ? null : <Route exact path="/" render={(props) => <Login {...props} sendToken={this.addToken} />} />}
           {this.state.curUser ? null : <Route exact path="/signup" render={(props) => <NewUser {...props} sendToken={this.addToken} />} />}
