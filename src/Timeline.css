@@ -72,12 +72,10 @@
   }
   
   time {
-    display: inline-flex;
+    display: inline-block;
     font-size: 1.1rem;
-    /* font-weight: bold; */
-    text-align: left
+    /* text-align: left; */
   }
-
 
   /* #timesub {
     display: inline-flex;

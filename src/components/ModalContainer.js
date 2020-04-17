@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import Modal from './Modal'
 
 class ModalContainer extends Component {
@@ -22,7 +22,7 @@ class ModalContainer extends Component {
   }
 
   render() {
-    return <div><Modal repo={this.props.repo} modalDisplay={this.toggleModal()} /></div>
+    return <Fragment><Modal repo={this.props.repo} modalDisplay={this.toggleModal()} /></Fragment>
   }
 }
 export default ModalContainer;

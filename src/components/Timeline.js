@@ -39,12 +39,11 @@ class Timeline extends Component {
             return <li key={repo.git_id} >
                 <div className='item-title' data-id={repo.git_id} onClick={this.modalToggle}>
                     <time>
-                    <img src={logo} alt="Github mark logo" /> {repo.name}
-                    {/* <br></br> */}
+                    <img id="git-logo" src={logo} alt="Github mark logo" /> <strong>{repo.name}</strong>
+                    <br></br>
                     <span role="img" aria-label="hatching-chick">🐣</span> {moment(repo.repo_created_at).format('MMMM Do YYYY')}
                     <span role="img" aria-label="recycling-symbol"> ♻️</span> {moment(repo.repo_updated_at).startOf('day').fromNow()}
                     </time>
-
                     <ModalContainer repo={repo} clicked={this.state}/>
                 </div>
             </li>
