@@ -3,6 +3,7 @@ import '../Timeline.css';
 import Modal from './Modal.js';
 import moment from 'moment'
 import logo from './GitHub-Mark-32px.png';
+import ModalSection from './ModalSection';
 
 class Timeline extends Component {
 
@@ -10,7 +11,6 @@ class Timeline extends Component {
         super(props)
         this.state = {
             display: false,
-            modal: false
         }
     }
 
@@ -28,18 +28,18 @@ class Timeline extends Component {
         return repos.sort((a, b) => b.repo_created_at.localeCompare(a.repo_created_at));
     }
 
-    modalToggle = () => {
-        console.log("Toggle");
+//   modalToggle = () => {
+//         console.log("Toggle");
         
-        this.setState({
-            modal: !this.state.modal
-        })
-    }
+//         this.setState({
+//             modal: !this.state.modal
+//         })
+//     }  
 
     renderRepos = () => {
         return this.sortRepoByDate(this.props.repos).map((repo,index) => {
             return <li key={index} >
-                <div className='item-title' onClick={this.modalToggle}>
+                <div className='item-title'>
                     <timefont>
                     <img src={logo} alt="Github mark logo" /> {repo.name}
                     </timefont>
@@ -50,8 +50,7 @@ class Timeline extends Component {
                     <timesub>
                     <span role="img" aria-label="recycling-symbol"> ♻️</span> {moment(repo.repo_updated_at).startOf('day').fromNow()}
                     </timesub>
-                    {/* <Modal repo={repo} modalState={this.state.modal}/> */}
-                    <Modal repo={repo}/>
+                    <ModalSection repo={repo}/>
                 </div>
             </li>
         })
@@ -106,6 +105,7 @@ class Timeline extends Component {
             <section className="timeline">
                 <ul>
                     {this.renderRepos()}
+                    {/* <ModalSection repo={this.props.repo}/> */}
                     {this.state.display ? this.renderTimeline() : null}
                     {/* Recreate HTML for length of map from li to line 56 comment
                     <li>
