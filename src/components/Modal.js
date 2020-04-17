@@ -7,15 +7,15 @@ class ModalModalExample extends React.Component {
     super(props);
 
     this.state = {
-      modal: false,
-      repo: this.props.repo
+      repo: this.props.repo,
+      modalState: this.props.modalState
     }
   }
 
   render() {
     return (
       // <Modal trigger={<Button>Show Modal</Button>}>
-      <Modal >
+      <Modal size='tiny' open={this.props.modalState}>
         {/* <Modal.Header>Select a Photo</Modal.Header> */}
         <Modal.Content image>
           <Modal.Description>

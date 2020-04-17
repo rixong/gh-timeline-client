@@ -8,8 +8,8 @@ class ModalSection extends React.Component {
     super(props);
 
     this.state = {
-      modal: false,
-      repo: this.props.repo
+      repo: this.props.repo,
+      modal: false
     }
   }
 
@@ -27,13 +27,13 @@ class ModalSection extends React.Component {
         />,
         <Modal // The invisible modal itself
           key='modal1'
-          modalOpen={this.state.modalOpen}
+          repo={this.state.repo}
+          modalState={this.state.modal}
           handleClose={
             () => {
               this.setState({ modal: false })
             }
           }
-          repo={this.props.repo}
         />
     ])
   }
