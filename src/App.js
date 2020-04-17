@@ -9,7 +9,7 @@ import LinkButton from './components/LinkButton'
 // import Timeline from './components/Timeline'
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import logo from './components/GitHub-Mark-32px.png';
-
+import FormExampleFieldControlId from './components/Form'
 
 class App extends Component {
 
@@ -62,9 +62,11 @@ class App extends Component {
             :
             null}
           </div>
+          
           {this.state.curUser ? null : <Route exact path="/" render={(props) => <Login {...props} sendToken={this.addToken} />} />}
-          {this.state.curUser ? null : <Route exact path="/signup" render={(props) => <NewUser {...props} sendToken={this.addToken} />} />}
+          {this.state.curUser ? null : <Route exact path="/signup" render={(props) => <FormExampleFieldControlId {...props} sendToken={this.addToken} />} />}
           {this.state.curUser ? <Profile user={this.state.curUser} /> : null}
+          
         </div>
       </Router>
     );
